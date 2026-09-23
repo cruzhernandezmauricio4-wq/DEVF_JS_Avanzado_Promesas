@@ -29,3 +29,24 @@ function enviarConfirmacionReserva(nombreCliente) {
     }, 1500); // Simula el envío de un correo (1.5 segundos)
   });
 }
+// Función principal para gestionar una reserva
+async function hacerReserva(nombreCliente, mesasSolicitadas) {
+  try {
+    console.log("Verificando disponibilidad de mesas...");
+    const disponibilidad = await verificarDisponibilidad(mesasSolicitadas); // Espera la verificación
+    console.log(disponibilidad);
+
+    console.log("Enviando correo de confirmación...");
+    const confirmacion = await enviarConfirmacionReserva(nombreCliente); // Espera el envío de correo
+    console.log(confirmacion);
+
+    console.log("Reserva completada con éxito.");
+  } catch (error) {
+    // Manejo de errores en cualquiera de las promesas
+    console.log("Error:", error);
+  }
+}
+
+// Llamadas de prueba
+hacerReserva("Juan Pérez", 3);   // Caso exitoso: hay mesas disponibles
+hacerReserva("Ana López", 7);   // Caso de error: no hay suficientes mesas
