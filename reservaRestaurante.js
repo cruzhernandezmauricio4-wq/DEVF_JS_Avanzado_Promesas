@@ -15,3 +15,17 @@ function verificarDisponibilidad(mesasSolicitadas) {
     }, 2000); // Simula un retraso en la verificación (2 segundos)
   });
 }
+// Función que simula el envío de un correo de confirmación
+function enviarConfirmacionReserva(nombreCliente) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      // Usamos Math.random() para simular éxito o fallo en el envío
+      const exito = Math.random() > 0.3; // 70% de probabilidad de éxito
+      if (exito) {
+        resolve(`Correo de confirmación enviado a ${nombreCliente}.`);
+      } else {
+        reject("Error al enviar el correo de confirmación.");
+      }
+    }, 1500); // Simula el envío de un correo (1.5 segundos)
+  });
+}
